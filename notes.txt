@@ -1,0 +1,18 @@
+INSTALL_MASK="*.h *.gz *.bz2"
+emerge --root=/mnt/gentoo/ --binpkg-respect-use=n baselayout -kb 1 Package
+emerge --root=/mnt/gentoo/ --binpkg-respect-use=n systemd -kb 40 Packages
+emerge --root=/mnt/gentoo/ --binpkg-respect-use=n bash  -kb 1 Package
+mkdir dev sys boot proc root run
+emerge --root=/mnt/gentoo/ --binpkg-respect-use=n glibc -kb 3 Packages
+emerge --root=/mnt/gentoo/ --binpkg-respect-use=n coreutils -kbpv
+copy libgcc_so.1 libstdc++
+emerge --root=/mnt/gentoo/ --binpkg-respect-use=n less -kb
+emerge --root=/mnt/gentoo/ --binpkg-respect-use=n sys-apps/net-tools sys-apps/grep
+emerge --root=/mnt/gentoo/ --binpkg-respect-use=n xorg-x11
+
+add user messagebus
+useradd -g 239 -u 109 messagebus
+groupadd -g 239 messagebus
+
+create /var/run as a symlink to /run
+
